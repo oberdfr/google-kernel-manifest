@@ -3,13 +3,16 @@
 
   <remote  name="aosp"
     fetch="https://android.googlesource.com/" />
-  <default revision="android-gs-caimito-6.1-android14-qpr3-d1"
+  <remote name="hentai"
+    fetch="ssh://git@ssh.gitlab.hentaios.com:2052/hentaios-gs-6.x/"
+    revision="refs/heads/Ursamoon" />
+  <default revision="refs/tags/android-14.0.0_r0.122"
     remote="aosp" sync-j="4" />
 
-  <project path="aosp" name="kernel/common" groups="partner" >
+  <project path="aosp" name="kernel/common" groups="partner" revision="refs/heads/android14-6.1-2024-08" >
     <linkfile dest="aosp-staging" src="." />
   </project>
-  <project path="private/google-modules/soc/gs" name="kernel/google-modules/soc/gs" groups="partner" />
+  <project path="private/google-modules/soc/gs" name="google-modules_soc_gs" groups="partner" remote="hentai" />
   <project path="private/devices/google/common" name="kernel/devices/google/common" groups="partner" >
     <linkfile dest="WORKSPACE" src="bazel.WORKSPACE" />
     <linkfile dest="device.bazelrc" src="device.bazelrc" />
@@ -25,14 +28,21 @@
     <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/ripcurrentpro" src="dts/google" />
     <linkfile dest=".d7.bazelrc" src="device.bazelrc" />
   </project>
-  <project path="private/google-modules/amplifiers" name="kernel/google-modules/amplifiers" groups="partner" />
+  <project path="private/devices/google/gs101" name="kernel_devices_google_gs101" groups="partner" remote="hentai" />
+  <project path="private/devices/google/slider" name="kernel_devices_google_slider" groups="partner,slider" remote="hentai" >
+    <linkfile dest="build_slider.sh" src="build_slider.sh"/>
+    <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/slider" src="dts/google"/>
+    <linkfile dest=".d2.bazelrc" src="device.bazelrc"/>
+  </project>
+  <project path="private/google-modules/amplifiers" name="google-modules_amplifiers" groups="partner" remote="hentai" />
   <project path="private/google-modules/aoc" name="kernel/google-modules/aoc" groups="partner" />
-  <project path="private/google-modules/aoc_ipc" name="kernel/google-modules/aoc-ipc" groups="partner" />
+  <project path="private/google-modules/aoc_whi" name="google-modules_aoc_whi" groups="partner" remote="hentai" />
+  <project path="private/google-modules/aoc_ipc" name="google-modules_aoc_ipc" groups="partner" remote="hentai" />
   <project path="private/google-modules/bluetooth/broadcom" name="kernel/google-modules/bluetooth/broadcom" groups="partner" />
   <project path="private/google-modules/bluetooth/synaptics" name="kernel/google-modules/bluetooth/synaptics" groups="partner" />
   <project path="private/google-modules/bluetooth/qcom" name="kernel/google-modules/bluetooth/qcom" groups="partner" />
   <project path="private/google-modules/bms" name="kernel/google-modules/bms" groups="partner" />
-  <project path="private/google-modules/display/samsung" name="kernel/google-modules/display/samsung" groups="partner" />
+  <project path="private/google-modules/display/samsung" name="google-modules_display_samsung" groups="partner" remote="hentai" />
   <project path="private/google-modules/display/common" name="kernel/google-modules/display/common" groups="partner" />
   <project path="private/google-modules/display/panels/caimito" name="kernel/google-modules/display/panels/caimito" groups="partner" />
   <project path="private/google-modules/edgetpu/abrolhos" name="kernel/google-modules/edgetpu/abrolhos" groups="partner" />
@@ -65,6 +75,7 @@
   <project path="private/google-modules/uwb/qorvo/dw3000" name="kernel/google-modules/uwb/qorvo/dw3000" groups="partner" />
   <project path="private/google-modules/uwb/qorvo/qm35" name="kernel/google-modules/uwb/qorvo/qm35" groups="partner" />
   <project path="private/google-modules/video/gchips" name="kernel/google-modules/video/gchips" groups="partner" />
+  <project path="private/google-modules/video/gchips_whi" name="google-modules_video_gchips_whi" groups="partner" remote="hentai" />
   <project path="private/google-modules/nfc" name="kernel/google-modules/nfc" groups="partner" />
   <project path="private/google-modules/wlan/bcm4398" name="kernel/google-modules/wlan/bcmdhd/bcm4398" groups="partner" />
   <project path="private/google-modules/wlan/bcm4390" name="kernel/google-modules/wlan/bcmdhd/bcm4390" groups="partner" />
@@ -73,7 +84,7 @@
   <project path="private/google-modules/wlan/wcn6740/cnss2" name="kernel/google-modules/wlan/qcom/wcn6740/cnss2" groups="partner" />
   <project path="private/google-modules/wlan/wcn6740/wlan" name="kernel/google-modules/wlan/qcom/wcn6740/wlan" groups="partner" />
   <project path="private/google-modules/wlan/wlan_ptracker" name="kernel/google-modules/wlan/wlan_ptracker" groups="partner" />
-  <project path="build/kernel" name="kernel/build" groups="partner" >
+  <project path="build/kernel" name="kernel/build" groups="partner" revision="main-kernel-build-2023" >
     <linkfile dest="tools/bazel" src="kleaf/bazel.sh" />
     <linkfile dest="build/build.sh" src="build.sh" />
     <linkfile dest="build/build_abi.sh" src="build_abi.sh" />
@@ -87,17 +98,17 @@
     <linkfile dest="build/static_analysis" src="static_analysis" />
   </project>
   <project path="kernel/configs" name="kernel/configs" />
-  <project path="prebuilts/clang/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86" groups="partner" />
-  <project path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" groups="partner" />
-  <project path="prebuilts/boot-artifacts" name="platform/prebuilts/boot-artifacts" groups="partner" />
-  <project path="prebuilts/build-tools" name="platform/prebuilts/build-tools" groups="partner" />
-  <project path="prebuilts/kernel-build-tools" name="kernel/prebuilts/build-tools" groups="partner" />
-  <project path="tools/mkbootimg" name="platform/system/tools/mkbootimg" groups="partner" />
-  <project path="build/bazel_common_rules" name="platform/build/bazel_common_rules" groups="partner" />
-  <project path="external/bazel-skylib" name="platform/external/bazel-skylib" groups="partner" />
-  <project path="external/python/absl-py" name="platform/external/python/absl-py" groups="partner" />
-  <project path="external/stardoc" name="platform/external/stardoc" groups="partner" />
-  <project path="prebuilts/bazel/linux-x86_64" name="platform/prebuilts/bazel/linux-x86_64" groups="partner" />
-  <project path="prebuilts/jdk/jdk11" name="platform/prebuilts/jdk/jdk11" groups="partner" />
-  <project path="prebuilts/ndk-r23" name="toolchain/prebuilts/ndk/r23" groups="partner" />
+  <project path="prebuilts/clang/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86" groups="partner" clone-depth="1" />
+  <project path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" groups="partner" clone-depth="1" />
+  <project path="prebuilts/boot-artifacts" name="platform/prebuilts/boot-artifacts" groups="partner" clone-depth="1" />
+  <project path="prebuilts/build-tools" name="platform/prebuilts/build-tools" groups="partner" clone-depth="1" />
+  <project path="prebuilts/kernel-build-tools" name="kernel/prebuilts/build-tools" groups="partner" clone-depth="1" />
+  <project path="tools/mkbootimg" name="platform/system/tools/mkbootimg" groups="partner" clone-depth="1" />
+  <project path="build/bazel_common_rules" name="platform/build/bazel_common_rules" groups="partner" clone-depth="1" />
+  <project path="external/bazel-skylib" name="platform/external/bazel-skylib" groups="partner" clone-depth="1" />
+  <project path="external/python/absl-py" name="platform/external/python/absl-py" groups="partner" clone-depth="1" />
+  <project path="external/stardoc" name="platform/external/stardoc" groups="partner" clone-depth="1" />
+  <project path="prebuilts/bazel/linux-x86_64" name="platform/prebuilts/bazel/linux-x86_64" groups="partner" clone-depth="1" />
+  <project path="prebuilts/jdk/jdk11" name="platform/prebuilts/jdk/jdk11" groups="partner" clone-depth="1" />
+  <project path="prebuilts/ndk-r23" name="toolchain/prebuilts/ndk/r23" groups="partner" clone-depth="1" />
 </manifest>
