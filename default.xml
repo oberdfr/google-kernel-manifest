@@ -34,6 +34,11 @@
     <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/slider" src="dts/google"/>
     <linkfile dest=".d2.bazelrc" src="device.bazelrc"/>
   </project>
+  <project path="private/devices/google/bluejay" name="kernel_devices_google_bluejay" groups="partner,bluejay" remote="hentai" >
+    <linkfile dest="build_bluejay.sh" src="build_bluejay.sh"/>
+    <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/bluejay" src="dts/google"/>
+    <linkfile dest=".d3.bazelrc" src="device.bazelrc"/>
+  </project>
   <project path="private/google-modules/amplifiers" name="google-modules_amplifiers" groups="partner" remote="hentai" />
   <project path="private/google-modules/aoc" name="kernel/google-modules/aoc" groups="partner" />
   <project path="private/google-modules/aoc_whi" name="google-modules_aoc_whi" groups="partner" remote="hentai" />
@@ -58,7 +63,7 @@
   <project path="private/google-modules/lwis" name="kernel/google-modules/lwis" groups="partner" />
   <project path="private/google-modules/misc" name="kernel/google-modules/misc" groups="partner" />
   <project path="private/google-modules/perf" name="kernel/google-modules/perf" groups="partner" />
-  <project path="private/google-modules/power/mitigation" name="kernel/google-modules/power/mitigation" groups="partner" />
+  <project path="private/google-modules/power/mitigation" name="google-modules_power_mitigation" groups="partner" remote="hentai" />
   <project path="private/google-modules/power/reset" name="kernel/google-modules/power/reset" groups="partner" />
   <project path="private/google-modules/sensors/hall_sensor" name="kernel/google-modules/sensors/hall_sensor" groups="partner" />
   <project path="private/google-modules/radio/samsung/s5300" name="kernel/google-modules/radio/samsung/s5300" groups="partner" />
