@@ -3,17 +3,20 @@
 
   <remote  name="aosp"
     fetch="https://android.googlesource.com/" />
-  <remote name="hentai"
+  <remote name="helluva"
     fetch="ssh://git@ssh.gitlab.hentaios.com:2052/hentaios-gs-6.x/"
     revision="refs/heads/Ursamoon" />
-  <default revision="refs/tags/android-14.0.0_r0.122"
+  <default revision="refs/tags/android-15-qpr1-beta-1_r0.9"
     remote="aosp" sync-j="4" />
 
   <project path="aosp" name="kernel/common" groups="partner" revision="refs/heads/android14-6.1-2024-08" >
+    <linkfile dest="common/build.config.constants" src="build.config.constants" />
+    <linkfile dest="common/modules.bzl" src="modules.bzl" />
     <linkfile dest="aosp-staging" src="." />
   </project>
-  <project path="private/google-modules/soc/gs" name="google-modules_soc_gs" groups="partner" remote="hentai" />
+  <project path="private/google-modules/soc/gs" name="google-modules_soc_gs" groups="partner" remote="helluva" />
   <project path="private/devices/google/common" name="kernel/devices/google/common" groups="partner" >
+    <linkfile dest="common/BUILD.bazel" src="kleaf/common.BUILD.bazel" />
     <linkfile dest="WORKSPACE" src="bazel.WORKSPACE" />
     <linkfile dest="device.bazelrc" src="device.bazelrc" />
     <linkfile dest="update_symbol_list.sh" src="update_symbol_list.sh" />
@@ -28,26 +31,21 @@
     <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/ripcurrentpro" src="dts/google" />
     <linkfile dest=".d7.bazelrc" src="device.bazelrc" />
   </project>
-  <project path="private/devices/google/gs101" name="kernel_devices_google_gs101" groups="partner" remote="hentai" />
-  <project path="private/devices/google/slider" name="kernel_devices_google_slider" groups="partner,slider" remote="hentai" >
-    <linkfile dest="build_slider.sh" src="build_slider.sh"/>
-    <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/slider" src="dts/google"/>
+  <project path="private/devices/google/gs101" name="kernel_devices_google_gs101" groups="partner" remote="helluva" />
+  <project path="private/devices/google/raviole" name="kernel_devices_google_raviole" groups="partner,raviole" remote="helluva" >
+    <linkfile dest="build_raviole.sh" src="build_raviole.sh"/>
+    <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/raviole" src="dts/google"/>
     <linkfile dest=".d2.bazelrc" src="device.bazelrc"/>
   </project>
-  <project path="private/devices/google/bluejay" name="kernel_devices_google_bluejay" groups="partner,bluejay" remote="hentai" >
-    <linkfile dest="build_bluejay.sh" src="build_bluejay.sh"/>
-    <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/bluejay" src="dts/google"/>
-    <linkfile dest=".d3.bazelrc" src="device.bazelrc"/>
-  </project>
-  <project path="private/google-modules/amplifiers" name="google-modules_amplifiers" groups="partner" remote="hentai" />
+  <project path="private/google-modules/amplifiers" name="google-modules_amplifiers" groups="partner" remote="helluva" />
   <project path="private/google-modules/aoc" name="kernel/google-modules/aoc" groups="partner" />
-  <project path="private/google-modules/aoc_whi" name="google-modules_aoc_whi" groups="partner" remote="hentai" />
-  <project path="private/google-modules/aoc_ipc" name="google-modules_aoc_ipc" groups="partner" remote="hentai" />
+  <project path="private/google-modules/aoc_whi" name="google-modules_aoc_whi" groups="partner" remote="helluva" />
+  <project path="private/google-modules/aoc_ipc" name="google-modules_aoc_ipc" groups="partner" remote="helluva" />
   <project path="private/google-modules/bluetooth/broadcom" name="kernel/google-modules/bluetooth/broadcom" groups="partner" />
   <project path="private/google-modules/bluetooth/synaptics" name="kernel/google-modules/bluetooth/synaptics" groups="partner" />
   <project path="private/google-modules/bluetooth/qcom" name="kernel/google-modules/bluetooth/qcom" groups="partner" />
-  <project path="private/google-modules/bms" name="google-modules_power_bms" groups="partner" remote="hentai" />
-  <project path="private/google-modules/display/samsung" name="google-modules_display_samsung" groups="partner" remote="hentai" />
+  <project path="private/google-modules/bms" name="google-modules_power_bms" groups="partner" remote="helluva" />
+  <project path="private/google-modules/display/samsung" name="google-modules_display_samsung" groups="partner" remote="helluva" />
   <project path="private/google-modules/display/common" name="kernel/google-modules/display/common" groups="partner" />
   <project path="private/google-modules/display/panels/caimito" name="kernel/google-modules/display/panels/caimito" groups="partner" />
   <project path="private/google-modules/edgetpu/abrolhos" name="kernel/google-modules/edgetpu/abrolhos" groups="partner" />
@@ -63,10 +61,10 @@
   <project path="private/google-modules/lwis" name="kernel/google-modules/lwis" groups="partner" />
   <project path="private/google-modules/misc" name="kernel/google-modules/misc" groups="partner" />
   <project path="private/google-modules/perf" name="kernel/google-modules/perf" groups="partner" />
-  <project path="private/google-modules/power/mitigation" name="google-modules_power_mitigation" groups="partner" remote="hentai" />
+  <project path="private/google-modules/power/mitigation" name="google-modules_power_mitigation" groups="partner" remote="helluva" />
   <project path="private/google-modules/power/reset" name="kernel/google-modules/power/reset" groups="partner" />
   <project path="private/google-modules/sensors/hall_sensor" name="kernel/google-modules/sensors/hall_sensor" groups="partner" />
-  <project path="private/google-modules/radio/samsung/s5300" name="kernel/google-modules/radio/samsung/s5300" groups="partner" />
+  <project path="private/google-modules/radio/samsung/s5300" name="google-modules_radio_samsung_s5300" groups="partner" remote="helluva" />
   <project path="private/google-modules/radio/samsung/s5400" name="kernel/google-modules/radio/samsung/s5400" groups="partner" />
   <project path="private/google-modules/touch/common" name="kernel/google-modules/touch/common" groups="partner" />
   <project path="private/google-modules/touch/focaltech" name="kernel/google-modules/touch/focaltech_touch" groups="partner" />
@@ -75,16 +73,16 @@
   <project path="private/google-modules/touch/novatek" name="kernel/google-modules/touch/novatek_touch" groups="partner" />
   <project path="private/google-modules/touch/sec" name="kernel/google-modules/touch/sec_touch" groups="partner" />
   <project path="private/google-modules/touch/synaptics" name="kernel/google-modules/touch/synaptics_touch" groups="partner" />
-  <project path="private/google-modules/trusty" name="kernel/google-modules/trusty" groups="partner" />
+  <project path="private/google-modules/trusty" name="google-modules_trusty" groups="partner" remote="helluva" />
   <project path="private/google-modules/typec" name="kernel/google-modules/typec" groups="partner" />
   <project path="private/google-modules/uwb/qorvo/dw3000" name="kernel/google-modules/uwb/qorvo/dw3000" groups="partner" />
   <project path="private/google-modules/uwb/qorvo/qm35" name="kernel/google-modules/uwb/qorvo/qm35" groups="partner" />
   <project path="private/google-modules/video/gchips" name="kernel/google-modules/video/gchips" groups="partner" />
-  <project path="private/google-modules/video/gchips_whi" name="google-modules_video_gchips_whi" groups="partner" remote="hentai" />
+  <project path="private/google-modules/video/gchips_whi" name="google-modules_video_gchips_whi" groups="partner" remote="helluva" />
   <project path="private/google-modules/nfc" name="kernel/google-modules/nfc" groups="partner" />
   <project path="private/google-modules/wlan/bcm4398" name="kernel/google-modules/wlan/bcmdhd/bcm4398" groups="partner" />
   <project path="private/google-modules/wlan/bcm4390" name="kernel/google-modules/wlan/bcmdhd/bcm4390" groups="partner" />
-  <project path="private/google-modules/wlan/bcm4389" name="google-modules_wlan_bcmdhd_bcm4389" groups="partner" remote="hentai" />
+  <project path="private/google-modules/wlan/bcm4389" name="google-modules_wlan_bcmdhd_bcm4389" groups="partner" remote="helluva" />
   <project path="private/google-modules/wlan/dhd43752p" name="kernel/google-modules/wlan/syna/dhd43752p" groups="partner" />
   <project path="private/google-modules/wlan/wcn6740/cnss2" name="kernel/google-modules/wlan/qcom/wcn6740/cnss2" groups="partner" />
   <project path="private/google-modules/wlan/wcn6740/wlan" name="kernel/google-modules/wlan/qcom/wcn6740/wlan" groups="partner" />
@@ -105,7 +103,7 @@
   <project path="kernel/configs" name="kernel/configs" />
   <project path="prebuilts/clang/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86" groups="partner" clone-depth="1" />
   <project path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" groups="partner" clone-depth="1" />
-  <project path="prebuilts/boot-artifacts" name="platform/prebuilts/boot-artifacts" groups="partner" clone-depth="1" />
+  <project path="prebuilts/boot-artifacts" name="platform/prebuilts/boot-artifacts" groups="partner" revision="refs/tags/android-14.0.0_r0.124" clone-depth="1" />
   <project path="prebuilts/build-tools" name="platform/prebuilts/build-tools" groups="partner" clone-depth="1" />
   <project path="prebuilts/kernel-build-tools" name="kernel/prebuilts/build-tools" groups="partner" clone-depth="1" />
   <project path="tools/mkbootimg" name="platform/system/tools/mkbootimg" groups="partner" clone-depth="1" />
