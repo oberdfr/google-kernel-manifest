@@ -32,10 +32,16 @@
     <linkfile dest=".d7.bazelrc" src="device.bazelrc" />
   </project>
   <project path="private/devices/google/gs101" name="kernel_devices_google_gs101" groups="partner" remote="helluva" />
+  <project path="private/devices/google/gs201" name="kernel_devices_google_gs201" groups="partner" remote="helluva" />
   <project path="private/devices/google/raviole" name="kernel_devices_google_raviole" groups="partner,raviole" remote="helluva" >
     <linkfile dest="build_raviole.sh" src="build_raviole.sh"/>
     <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/raviole" src="dts/google"/>
     <linkfile dest=".d2.bazelrc" src="device.bazelrc"/>
+  </project>
+  <project path="private/devices/google/pantah" name="kernel_devices_google_pantah" groups="partner,pantah" remote="helluva" >
+    <linkfile dest="build_pantah.sh" src="build_pantah.sh"/>
+    <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/pantah" src="dts/google"/>
+    <linkfile dest=".d3.bazelrc" src="device.bazelrc"/>
   </project>
   <project path="private/google-modules/amplifiers" name="google-modules_amplifiers" groups="partner" remote="helluva" />
   <project path="private/google-modules/aoc" name="kernel/google-modules/aoc" groups="partner" />
@@ -55,7 +61,7 @@
   <project path="private/google-modules/fingerprint/qcom/qfs4008" name="kernel/google-modules/fingerprint/qcom/qfs4008" groups="partner" />
   <project path="private/google-modules/gps/broadcom/bcm47765" name="kernel/google-modules/gps/broadcom/bcm47765" groups="partner" />
   <project path="private/google-modules/gpu" name="kernel/google-modules/gpu" groups="partner" />
-  <project path="private/google-modules/gxp/gs201" name="kernel/google-modules/gxp/gs201" groups="partner" />
+  <project path="private/google-modules/gxp/gs201" name="google-modules_gxp_gs201" groups="partner" remote="helluva" />
   <project path="private/google-modules/gxp/zuma" name="kernel/google-modules/gxp/zuma" groups="partner" />
   <project path="private/google-modules/hdcp/samsung" name="kernel/google-modules/hdcp/samsung" groups="partner" />
   <project path="private/google-modules/lwis" name="kernel/google-modules/lwis" groups="partner" />
@@ -85,7 +91,7 @@
   <project path="private/google-modules/wlan/bcm4389" name="google-modules_wlan_bcmdhd_bcm4389" groups="partner" remote="helluva" />
   <project path="private/google-modules/wlan/dhd43752p" name="kernel/google-modules/wlan/syna/dhd43752p" groups="partner" />
   <project path="private/google-modules/wlan/wcn6740/cnss2" name="kernel/google-modules/wlan/qcom/wcn6740/cnss2" groups="partner" />
-  <project path="private/google-modules/wlan/wcn6740/wlan" name="kernel/google-modules/wlan/qcom/wcn6740/wlan" groups="partner" />
+  <project path="private/google-modules/wlan/wcn6740/wlan" name="google-modules_wlan_qcom_wcn6740_wlan" groups="partner" remote="helluva" />
   <project path="private/google-modules/wlan/wlan_ptracker" name="kernel/google-modules/wlan/wlan_ptracker" groups="partner" />
   <project path="build/kernel" name="kernel/build" groups="partner" revision="main-kernel-build-2023" >
     <linkfile dest="tools/bazel" src="kleaf/bazel.sh" />
