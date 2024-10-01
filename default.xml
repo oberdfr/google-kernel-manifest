@@ -15,7 +15,7 @@
     <linkfile dest="aosp-staging" src="." />
   </project>
   <project path="private/google-modules/soc/gs" name="google-modules_soc_gs" groups="partner" remote="helluva" />
-  <project path="private/devices/google/common" name="kernel/devices/google/common" groups="partner" >
+  <project path="private/devices/google/common" name="kernel_devices_google_common" groups="partner" remote="helluva" >
     <linkfile dest="common/BUILD.bazel" src="kleaf/common.BUILD.bazel" />
     <linkfile dest="WORKSPACE" src="bazel.WORKSPACE" />
     <linkfile dest="device.bazelrc" src="device.bazelrc" />
