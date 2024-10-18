@@ -23,7 +23,9 @@
   </project>
   <project path="private/devices/google/zuma" name="kernel/devices/google/zuma" groups="partner" />
   <project path="private/devices/google/shusky" name="kernel/devices/google/shusky" groups="partner,shusky" >
+    <linkfile dest="build_shusky.sh" src="build_shusky.sh" />
     <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/ripcurrent" src="dts/google" />
+    <linkfile dest=".d4.bazelrc" src="device.bazelrc" />
   </project>
   <project path="private/devices/google/zumapro" name="kernel/devices/google/zumapro" groups="partner" />
   <project path="private/devices/google/caimito" name="kernel/devices/google/caimito" groups="partner,caimito" >
