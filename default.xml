@@ -21,8 +21,8 @@
     <linkfile dest="device.bazelrc" src="device.bazelrc" />
     <linkfile dest="update_symbol_list.sh" src="update_symbol_list.sh" />
   </project>
-  <project path="private/devices/google/zuma" name="kernel/devices/google/zuma" groups="partner" />
-  <project path="private/devices/google/shusky" name="kernel/devices/google/shusky" groups="partner,shusky" >
+  <project path="private/devices/google/zuma" name="kernel_devices_google_zuma" groups="partner" remote="helluva" />
+  <project path="private/devices/google/shusky" name="kernel_devices_google_shusky" groups="partner,shusky" remote="helluva" >
     <linkfile dest="build_shusky.sh" src="build_shusky.sh" />
     <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/ripcurrent" src="dts/google" />
     <linkfile dest=".d4.bazelrc" src="device.bazelrc" />
