@@ -46,7 +46,7 @@
     <linkfile dest=".d3.bazelrc" src="device.bazelrc"/>
   </project>
   <project path="private/google-modules/amplifiers" name="google-modules_amplifiers" groups="partner" remote="helluva" />
-  <project path="private/google-modules/aoc" name="kernel/google-modules/aoc" groups="partner" />
+  <project path="private/google-modules/aoc" name="google-modules_aoc" groups="partner" remote="helluva" />
   <project path="private/google-modules/aoc_whi" name="google-modules_aoc_whi" groups="partner" remote="helluva" />
   <project path="private/google-modules/aoc_ipc" name="google-modules_aoc_ipc" groups="partner" remote="helluva" />
   <project path="private/google-modules/bluetooth/broadcom" name="kernel/google-modules/bluetooth/broadcom" groups="partner" />
