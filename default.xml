@@ -9,7 +9,7 @@
   <default revision="refs/tags/android-15-qpr1-beta-2_r0.9"
     remote="aosp" sync-j="4" />
 
-  <project path="aosp" name="kernel/common" groups="partner" revision="refs/heads/android14-6.1-2024-09" >
+  <project path="aosp" name="common" groups="partner" remote="helluva" >
     <linkfile dest="common/build.config.constants" src="build.config.constants" />
     <linkfile dest="common/modules.bzl" src="modules.bzl" />
     <linkfile dest="aosp-staging" src="." />
