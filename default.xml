@@ -4,25 +4,28 @@
   <remote  name="aosp"
     fetch="https://android.googlesource.com/" />
   <remote name="helluva"
-    fetch="ssh://git@ssh.gitlab.hentaios.com:2052/hentaios-gs-6.x/"
+    fetch="https://gitlab.hentaios.com/hentaios-gs-6.x/"
     revision="refs/heads/Ursamoon" />
-  <default revision="refs/tags/android-15-qpr1-beta-3_r0.9"
+  <remote name="oberdfr"
+    fetch="https://github.com/oberdfr"
+    revision="refs/heads/Vallhound" />
+  <default revision="refs/tags/android-15-qpr2-beta-1_r0.9"
     remote="aosp" sync-j="4" />
 
-  <project path="aosp" name="common" groups="partner" remote="helluva" >
+  <project path="aosp" name="kernel/common" groups="partner" >
     <linkfile dest="common/build.config.constants" src="build.config.constants" />
     <linkfile dest="common/modules.bzl" src="modules.bzl" />
     <linkfile dest="aosp-staging" src="." />
   </project>
-  <project path="private/google-modules/soc/gs" name="google-modules_soc_gs" groups="partner" remote="helluva" />
-  <project path="private/devices/google/common" name="kernel_devices_google_common" groups="partner" remote="helluva" >
+  <project path="private/google-modules/soc/gs" name="google-modules_soc_gs" groups="partner" remote="oberdfr" />
+  <project path="private/devices/google/common" name="kernel/devices/google/common" groups="partner" >
     <linkfile dest="common/BUILD.bazel" src="kleaf/common.BUILD.bazel" />
     <linkfile dest="WORKSPACE" src="bazel.WORKSPACE" />
     <linkfile dest="device.bazelrc" src="device.bazelrc" />
     <linkfile dest="update_symbol_list.sh" src="update_symbol_list.sh" />
   </project>
-  <project path="private/devices/google/zuma" name="kernel_devices_google_zuma" groups="partner" remote="helluva" />
-  <project path="private/devices/google/shusky" name="kernel_devices_google_shusky" groups="partner,shusky" remote="helluva" >
+  <project path="private/devices/google/zuma" name="kernel_devices_google_zuma" groups="partner" remote="oberdfr" />
+  <project path="private/devices/google/shusky" name="kernel_devices_google_shusky" groups="partner,shusky" remote="oberdfr" >
     <linkfile dest="build_shusky.sh" src="build_shusky.sh" />
     <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/ripcurrent" src="dts/google" />
     <linkfile dest=".d4.bazelrc" src="device.bazelrc" />
@@ -45,15 +48,15 @@
     <linkfile dest="private/google-modules/soc/gs/arch/arm64/boot/dts/google/devices/pantah" src="dts/google"/>
     <linkfile dest=".d3.bazelrc" src="device.bazelrc"/>
   </project>
-  <project path="private/google-modules/amplifiers" name="google-modules_amplifiers" groups="partner" remote="helluva" />
-  <project path="private/google-modules/aoc" name="google-modules_aoc" groups="partner" remote="helluva" />
+  <project path="private/google-modules/amplifiers" name="google-modules_amplifiers" groups="partner" remote="oberdfr" />
+  <project path="private/google-modules/aoc" name="google-modules_aoc" groups="partner" remote="oberdfr" />
   <project path="private/google-modules/aoc_whi" name="google-modules_aoc_whi" groups="partner" remote="helluva" />
   <project path="private/google-modules/aoc_ipc" name="google-modules_aoc_ipc" groups="partner" remote="helluva" />
   <project path="private/google-modules/bluetooth/broadcom" name="kernel/google-modules/bluetooth/broadcom" groups="partner" />
   <project path="private/google-modules/bluetooth/synaptics" name="kernel/google-modules/bluetooth/synaptics" groups="partner" />
   <project path="private/google-modules/bluetooth/qcom" name="kernel/google-modules/bluetooth/qcom" groups="partner" />
-  <project path="private/google-modules/bms" name="google-modules_power_bms" groups="partner" remote="helluva" />
-  <project path="private/google-modules/display/samsung" name="google-modules_display_samsung" groups="partner" remote="helluva" />
+  <project path="private/google-modules/bms" name="google-modules_bms" groups="partner" remote="oberdfr" />
+  <project path="private/google-modules/display/samsung" name="google-modules_display_samsung" groups="partner" remote="oberdfr" />
   <project path="private/google-modules/display/common" name="kernel/google-modules/display/common" groups="partner" />
   <project path="private/google-modules/display/panels/caimito" name="kernel/google-modules/display/panels/caimito" groups="partner" />
   <project path="private/google-modules/edgetpu/abrolhos" name="kernel/google-modules/edgetpu/abrolhos" groups="partner" />
@@ -62,35 +65,35 @@
   <project path="private/google-modules/fingerprint/fpc" name="kernel/google-modules/fingerprint/fpc" groups="partner" />
   <project path="private/google-modules/fingerprint/qcom/qfs4008" name="kernel/google-modules/fingerprint/qcom/qfs4008" groups="partner" />
   <project path="private/google-modules/gps/broadcom/bcm47765" name="kernel/google-modules/gps/broadcom/bcm47765" groups="partner" />
-  <project path="private/google-modules/gpu" name="kernel/google-modules/gpu" groups="partner" />
+  <project path="private/google-modules/gpu" name="google-modules_gpu" groups="partner" remote="oberdfr" />
   <project path="private/google-modules/gxp/gs201" name="google-modules_gxp_gs201" groups="partner" remote="helluva" />
   <project path="private/google-modules/gxp/zuma" name="kernel/google-modules/gxp/zuma" groups="partner" />
   <project path="private/google-modules/hdcp/samsung" name="kernel/google-modules/hdcp/samsung" groups="partner" />
   <project path="private/google-modules/lwis" name="kernel/google-modules/lwis" groups="partner" />
   <project path="private/google-modules/misc" name="kernel/google-modules/misc" groups="partner" />
   <project path="private/google-modules/perf" name="kernel/google-modules/perf" groups="partner" />
-  <project path="private/google-modules/power/mitigation" name="google-modules_power_mitigation" groups="partner" remote="helluva" />
+  <project path="private/google-modules/power/mitigation" name="google-modules_power_mitigation" groups="partner" remote="oberdfr" />
   <project path="private/google-modules/power/reset" name="kernel/google-modules/power/reset" groups="partner" />
   <project path="private/google-modules/sensors/hall_sensor" name="kernel/google-modules/sensors/hall_sensor" groups="partner" />
-  <project path="private/google-modules/radio/samsung/s5300" name="google-modules_radio_samsung_s5300" groups="partner" remote="helluva" />
+  <project path="private/google-modules/radio/samsung/s5300" name="google-modules_radio_samsung_s5300" groups="partner" remote="oberdfr" />
   <project path="private/google-modules/radio/samsung/s5400" name="kernel/google-modules/radio/samsung/s5400" groups="partner" />
   <project path="private/google-modules/touch/common" name="kernel/google-modules/touch/common" groups="partner" />
   <project path="private/google-modules/touch/focaltech" name="kernel/google-modules/touch/focaltech_touch" groups="partner" />
   <project path="private/google-modules/touch/fts" name="kernel/google-modules/touch/fts_touch" groups="partner" />
-  <project path="private/google-modules/touch/goodix" name="kernel/google-modules/touch/goodix_touch" groups="partner" />
+  <project path="private/google-modules/touch/goodix" name="google-modules_touch_goodix" groups="partner" remote="oberdfr" />
   <project path="private/google-modules/touch/novatek" name="kernel/google-modules/touch/novatek_touch" groups="partner" />
   <project path="private/google-modules/touch/sec" name="kernel/google-modules/touch/sec_touch" groups="partner" />
   <project path="private/google-modules/touch/synaptics" name="kernel/google-modules/touch/synaptics_touch" groups="partner" />
-  <project path="private/google-modules/trusty" name="google-modules_trusty" groups="partner" remote="helluva" />
+  <project path="private/google-modules/trusty" name="google-modules_trusty" groups="partner" remote="oberdfr" />
   <project path="private/google-modules/typec" name="kernel/google-modules/typec" groups="partner" />
   <project path="private/google-modules/uwb/qorvo/dw3000" name="kernel/google-modules/uwb/qorvo/dw3000" groups="partner" />
   <project path="private/google-modules/uwb/qorvo/qm35" name="kernel/google-modules/uwb/qorvo/qm35" groups="partner" />
   <project path="private/google-modules/video/gchips" name="kernel/google-modules/video/gchips" groups="partner" />
   <project path="private/google-modules/video/gchips_whi" name="google-modules_video_gchips_whi" groups="partner" remote="helluva" />
   <project path="private/google-modules/nfc" name="kernel/google-modules/nfc" groups="partner" />
-  <project path="private/google-modules/wlan/bcm4398" name="google-modules_wlan_bcmdhd_bcm4398" groups="partner" remote="helluva" />
+  <project path="private/google-modules/wlan/bcm4398" name="google-modules_wlan_bcmdhd_bcm4398" groups="partner" remote="oberdfr" />
   <project path="private/google-modules/wlan/bcm4390" name="kernel/google-modules/wlan/bcmdhd/bcm4390" groups="partner" />
-  <project path="private/google-modules/wlan/bcm4389" name="google-modules_wlan_bcmdhd_bcm4389" groups="partner" remote="helluva" />
+  <project path="private/google-modules/wlan/bcm4389" name="google-modules_wlan_bcmdhd_bcm4389" groups="partner" remote="oberdfr" />
   <project path="private/google-modules/wlan/dhd43752p" name="kernel/google-modules/wlan/syna/dhd43752p" groups="partner" />
   <project path="private/google-modules/wlan/wcn6740/cnss2" name="kernel/google-modules/wlan/qcom/wcn6740/cnss2" groups="partner" />
   <project path="private/google-modules/wlan/wcn6740/wlan" name="google-modules_wlan_qcom_wcn6740_wlan" groups="partner" remote="helluva" />
